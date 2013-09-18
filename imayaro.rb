@@ -7,19 +7,24 @@ require 'tweetstream'
 log = Logger.new(STDOUT)
 STDOUT.sync = true
 
+TWITTER_CONSUMER_KEY        = ENV["TWITTER_CONSUMER_KEY"]
+TWITTER_CONSUMER_SECRET_KEY = ENV["TWITTER_CONSUMER_SECRET_KEY"]
+TWITTER_ACCESS_TOKEN        = ENV["TWITTER_ACCESS_TOKEN"]
+TWITTER_ACCESS_TOKEN_SECRET = ENV["TWITTER_ACCESS_TOKEN_SECRET"]
+
 # REST API
 rest = Twitter::Client.new(
-  :consumer_key       => ENV['TWITTER_CONSUMER_KEY'],
-  :consumer_secret    => ENV['TWITTER_CONSUMER_SECRET'],
-  :oauth_token        => ENV['TWITTER_ACCESS_TOKEN'],
-  :oauth_token_secret => ENV['TWITTER_ACCESS_TOKEN_SECRET'],
+  :consumer_key       => TWITTER_CONSUMER_KEY,
+  :consumer_secret    => TWITTER_CONSUMER_SECRET_KEY,
+  :oauth_token        => TWITTER_ACCESS_TOKEN,
+  :oauth_token_secret => TWITTER_ACCESS_TOKEN_SECRET,
 )
 # Streaming API
 TweetStream.configure do |config|
-  config.consumer_key       = ENV['TWITTER_CONSUMER_KEY']
-  config.consumer_secret    = ENV['TWITTER_CONSUMER_SECRET']
-  config.oauth_token        = ENV['TWITTER_ACCESS_TOKEN']
-  config.oauth_token_secret = ENV['TWITTER_ACCESS_TOKEN_SECRET']
+  config.consumer_key       = TWITTER_CONSUMER_KEY,
+  config.consumer_secret    = TWITTER_CONSUMER_SECRET_KEY,
+  config.oauth_token        = TWITTER_ACCESS_TOKEN,
+  config.oauth_token_secret = TWITTER_ACCESS_TOKEN_SECRET,
   config.auth_method        = :oauth
 end
 
