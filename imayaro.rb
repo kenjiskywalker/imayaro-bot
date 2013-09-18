@@ -28,6 +28,11 @@ TweetStream.configure do |config|
   config.auth_method        = :oauth
 end
 
+p TWITTER_CONSUMER_KEY
+p TWITTER_CONSUMER_SECRET_KEY
+p TWITTER_ACCESS_TOKEN
+p TWITTER_ACCESS_TOKEN_SECRET
+
 stream = TweetStream::Client.new
 
 EM.error_handler do |e|
