@@ -33,6 +33,7 @@ stream = TweetStream::Client.new
 EM.error_handler do |e|
   log.error(e.message)
 end
+
 EM.run do
   # auto follow and unfollow (every 5 minutes)
   EM.add_periodic_timer(300) do
@@ -40,6 +41,10 @@ EM.run do
     followers = rest.follower_ids.all
     to_follow   = followers - friends
     to_unfollow = friends - followers
+
+    log.info(to_follow)
+    log.info(to_unfollow)
+
     # follow
     to_follow.each do |id|
       log.info('follow %s' % id)
