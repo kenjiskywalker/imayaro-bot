@@ -80,9 +80,9 @@ EM.run do
     when 2
       yarou = 'いますぐやりましょう！'
     when 3
-      yarou = '今すぐ帰ってやりましょう'
+      yarou = 'いまがその時です'
     when 4
-      yarou = '本当にやるんですか？'
+      yarou = 'やりましょうナウ'
     end
 
     imayaro = '@%s ' % status.from_user
