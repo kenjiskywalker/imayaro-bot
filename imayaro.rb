@@ -28,11 +28,6 @@ TweetStream.configure do |config|
   config.auth_method        = :oauth
 end
 
-p TWITTER_CONSUMER_KEY
-p TWITTER_CONSUMER_SECRET_KEY
-p TWITTER_ACCESS_TOKEN
-p TWITTER_ACCESS_TOKEN_SECRET
-
 stream = TweetStream::Client.new
 
 EM.error_handler do |e|
@@ -68,13 +63,29 @@ EM.run do
     next if status.retweet?
     next if status.reply?
 
-    p status.text
-
     log.info('status from @%s: %s' % [status.from_user, status.text])
+
+    n = rand(5)
+
+    case n
+    when 0
+      yarou = 'それ、いまやりましょう'
+    when 1
+      yarou = 'いつやるんです？'
+    when 2
+      yarou = 'いますぐやりましょう！'
+    when 3
+      yarou = '今すぐ帰ってやりましょう'
+    when 4
+      yarou = '本当にやるんですか？'
+    end
+
     imayaro = '@%s ' % status.from_user
     case status.text
     when /したい$/
-      imayaro += 'いまやろう！'
+      imayaro += yarou
+    when /りたい$/
+      imayaro += yarou
     else
       next
     end
