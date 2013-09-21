@@ -96,6 +96,8 @@ EM.run do
       imayaro += yarou
     when /てみたい$/
       imayaro += yarou
+    when /めたい$/
+      imayaro += yarou
     else
       next
     end
